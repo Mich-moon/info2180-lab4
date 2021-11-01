@@ -10,10 +10,10 @@
     <script src="app.js"></script>
   </head>
   <body>
+    <div class="banner">
+      <h1>AVENGERS CHARACTER SEARCH</h1>
+    </div>
     <div class="container">
-      <div class="banner">
-        <h1>AVENGER CHARACTER SEARCH</h1>
-      </div>
       <p>Search by full name or alias.</p>
       <form action="#" method="post">
         <input
@@ -21,10 +21,13 @@
           name="searchtext"
           id="searchtext"
           placeholder="eg. Captain America or Steve Rogers"
-          required
         />
         <button id="myButton" class="btn btn-primary">Search</button>
       </form>
+
+      <p>RESULT</p>
+      <hr />
+      <div id="result"></div>
     </div>
   </body>
 </html>

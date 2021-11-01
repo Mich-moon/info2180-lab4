@@ -5,6 +5,7 @@ body {
 
 h1 {
   font-family: Merriweather, serif;
+  justify-self: center;
 }
 
 .btn {
@@ -66,4 +67,8 @@ form button {
 
 form button:hover {
   background-color: #6675f5;
+}
+
+#result {
+  padding-top: 20px;
 }
