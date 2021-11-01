@@ -3,11 +3,6 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.container {
-  width: 960px;
-  margin: 0 auto;
-}
-
 h1 {
   font-family: Merriweather, serif;
 }
@@ -34,4 +29,41 @@ h1 {
 .btn-primary {
   color: #fff;
   background-color: #800bce;
+}
+
+.banner {
+  background-color: rgb(70, 70, 153);
+  color: #fff;
+  padding: 10px;
+  justify-content: center;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+form input {
+  grid-column: span 3;
+  align-self: center;
+  padding: 1em !important;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #d9d9da;
+}
+
+form button {
+  grid-column: 4;
+  align-self: center;
+  width: fit-content;
+  margin-left: 10%;
+}
+
+form button:hover {
+  background-color: #6675f5;
 }
