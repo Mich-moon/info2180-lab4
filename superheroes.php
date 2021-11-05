@@ -97,7 +97,7 @@ if($query == "") {
     }
 }
 
-// 
+
 var_dump($result);
 
 ?>
