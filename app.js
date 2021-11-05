@@ -9,51 +9,30 @@ window.onload = function() {
     btn.addEventListener("click", function(element){
         element.preventDefault();
         let searchText = search.value.trim();
+
         let exp = /[a-zA-Z] /;   // regular expression for lowercase and uppercase letters
 
         // remove previous result
         result.innerHTML = "";
 
+        //get the data by opening an AJAX request which returns the result of superheroes.php.
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                result.innerHTML = this.responseText;
+            }
+        };
+
         if (searchText.length == 0) {
-            //Fetch the data by opening an AJAX request which returns the result of superheroes.php.
-            fetch("superheroes.php")
-            .then(response => {
-                if (response.ok) {
-                    return response.text()
-                } else {
-                    return Promise.reject('could not fetch data')
-                }
-            })
-            .then(data => {
-                // show result on page
-                displayResult(data);
-            })
-            .catch(error => console.log(error));
-            
+
+            xmlhttp.open("GET", "superheroes.php", true);
+            xmlhttp.send();
 
         } else if (exp.test(searchText)) {
-            //Fetch a hero that matches the search text
-            let url = "superheroes.php?query="+searchText ;
-            fetch(url)
-            // fetch("superheroes.php?parameter=hero")
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    return Promise.reject('could not fetch data')
-                }
-            })
-            .then(heroData => {
-                // show result on page
-                displayResult(heroData);
-            })
-            .catch(error => console.log(error));
+
+            xmlhttp.open("GET", "superheroes.php?query="+searchText, true);
+            xmlhttp.send();
         }
 
     });
-
-    // adds results to the results div
-    let displayResult = function(data) {
-        result.innerHTML = data;
-    };
 };
