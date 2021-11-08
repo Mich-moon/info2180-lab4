@@ -64,7 +64,7 @@ $superheroes = [
 ];
 
 // added below here
-$result = [];
+$result = "";
 $query = "";
 $text = "";
 
@@ -75,10 +75,12 @@ if(isset($_GET["query"])) {
 // lookup a superhero
 if($query == "") {
     // if query is empty then result is all heroes in list tags
+    $text = "<ul>";
     foreach($superheroes as $hero) {
         $text.= "<li>".$hero['alias']."</li>" ;
     }
-    array_push($result, htmlspecialchars($text));
+    $text.= "</ul>";
+    $result.= $text;
     
 } else {
     $len = strlen($query);
@@ -86,19 +88,19 @@ if($query == "") {
     foreach($superheroes as $hero) {
         if(stristr($query, substr($hero["name"], 0, $len)) || stristr($query, substr($hero["alias"], 0, $len))) {
             $text.= "<h3>".$hero["alias"]."</h3><br><h4>".$hero["name"]."</h4><br><p>".$hero["biography"]."<p>" ;
-            array_push($result, htmlspecialchars($text) );
+            $result.= $text;
         }
     }
 
     // if no hero found then the result is a message
-    if(count($result) == 0) {
+    if(strlen($result) == 0) {
         $text.= "<p> Superhero not found</p>";
-        array_push($result, htmlspecialchars($text));
+        $result.= $text;
     }
 }
 
 
-var_dump($result);
+echo($result);
 
 ?>
 
